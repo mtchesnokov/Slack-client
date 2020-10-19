@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Description>This nuget package contains code to communicate with Slack</Description>
+    <PackageProjectUrl></PackageProjectUrl>
+    <Version>1.0.0</Version>
+    <Authors>Mikhail Tchesnokov</Authors>
+    <Company>Mikhail Tchesnokov</Company>
+    <PackageIconUrl></PackageIconUrl>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>c:\Projects\Nuget\Development\Nuget\IntraOffice.Nuget.SlackClient\Src\bin\Release\IntraOffice.Nuget.SlackClient.xml</DocumentationFile>
+    <NoWarn>1701;1702;1591</NoWarn>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Domain\Exceptions\" />
+  </ItemGroup>
+
+</Project>
