@@ -1,4 +1,4 @@
-﻿namespace Tch.Nuget.SlackClient.Domain
+﻿namespace Tch.Nuget.SlackClient.Domain.Helpers
 {
    internal abstract class SlackHttpResponseBase
    {

@@ -1,12 +1,12 @@
-﻿using System;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using Tch.Nuget.SlackClient.Configuration;
-using Tch.Nuget.SlackClient.Domain;
-using Tch.Nuget.SlackClient.Interfaces.Infra;
+using Tch.Nuget.SlackClient.Data;
+using Tch.Nuget.SlackClient.Domain.Exceptions;
+using Tch.Nuget.SlackClient.Domain.Helpers;
+using Tch.Nuget.SlackClient.Interfaces.Helpers;
 
-namespace Tch.Nuget.SlackClient.Services.Infra
+namespace Tch.Nuget.SlackClient.Services.Helpers
 {
    internal class SlackHttpService : ISlackHttpService
    {
@@ -30,13 +30,15 @@ namespace Tch.Nuget.SlackClient.Services.Infra
 
             if (!httpResponseMessage.IsSuccessStatusCode)
             {
-               throw new ApplicationException($"Sending message to Slack failed. Error code {httpResponseMessage.StatusCode} returned");
+               throw new SlackClientException("Sending message to Slack failed")
+               {
+                  ResponseStatusCode = httpResponseMessage.StatusCode,
+                  ResponseReasonPhrase = httpResponseMessage.ReasonPhrase
+               };
             }
 
             var responseBody = await httpResponseMessage.Content.ReadAsStringAsync();
-
             var response = JsonConvert.DeserializeObject<TSlackHttpResponse>(responseBody);
-
             return response;
          }
       }
@@ -63,13 +65,15 @@ namespace Tch.Nuget.SlackClient.Services.Infra
 
             if (!httpResponseMessage.IsSuccessStatusCode)
             {
-               throw new ApplicationException($"Sending message to Slack failed. Error code {httpResponseMessage.StatusCode} returned");
+               throw new SlackClientException("Sending message to Slack failed")
+               {
+                  ResponseStatusCode = httpResponseMessage.StatusCode,
+                  ResponseReasonPhrase = httpResponseMessage.ReasonPhrase
+               };
             }
 
             var responseBody = await httpResponseMessage.Content.ReadAsStringAsync();
-
             var response = JsonConvert.DeserializeObject<TSlackHttpResponse>(responseBody);
-
             return response;
          }
       }

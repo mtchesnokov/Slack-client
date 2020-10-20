@@ -1,4 +1,4 @@
-﻿namespace Tch.Nuget.SlackClient.Configuration
+﻿namespace Tch.Nuget.SlackClient.Data
 {
    internal class Constants
    {

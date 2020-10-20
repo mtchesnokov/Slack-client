@@ -4,3 +4,4 @@
 *.user
 **/.vs/
 **/packages/
+App.Dev.Config

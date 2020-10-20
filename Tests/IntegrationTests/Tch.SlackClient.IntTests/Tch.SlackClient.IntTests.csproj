@@ -13,7 +13,17 @@
    </ItemGroup>
 
    <ItemGroup>
-     <Folder Include="UseCases\" />
+     <ProjectReference Include="..\..\..\Src\Tch.Nuget.SlackClient.csproj" />
+   </ItemGroup>
+
+   <ItemGroup>
+     <Reference Include="System.Configuration" />
+   </ItemGroup>
+
+   <ItemGroup>
+     <None Update="App.Dev.config">
+       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+     </None>
    </ItemGroup>
 
 

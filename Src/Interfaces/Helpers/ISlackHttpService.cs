@@ -1,8 +1,8 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
-using Tch.Nuget.SlackClient.Domain;
+using Tch.Nuget.SlackClient.Domain.Helpers;
 
-namespace Tch.Nuget.SlackClient.Interfaces.Infra
+namespace Tch.Nuget.SlackClient.Interfaces.Helpers
 {
    /// <summary>
    /// This interface represents low level client service to send http requests to slack
