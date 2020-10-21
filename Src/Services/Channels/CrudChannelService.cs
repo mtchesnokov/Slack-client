@@ -45,7 +45,7 @@ namespace Tch.Nuget.SlackClient.Services.Channels
       {
          try
          {
-            var response = await _httpService.Send<ListSlackChannelResponse>(HttpMethod.Get, token, "/conversations.list");
+            var response = await _httpService.Send<ListSlackChannelResponse>(HttpMethod.Get, "/conversations.list", token);
             return response.Channels;
          }
          catch
@@ -72,14 +72,13 @@ namespace Tch.Nuget.SlackClient.Services.Channels
             {
                if (result.Channel == null)
                {
-                  throw new SlackClientException($"Channel '{channelName}' already exists");
+                  throw new SlackChannelAlreadyExists {ChannelName = channelName};
                }
-
 
                return result.Channel;
             }
 
-            throw new SlackClientException($"Creation of Slack channel '{channelName}' failed");
+            throw new SlackClientException($"Creation of Slack channel '{channelName}' failed"){Reason = result.Error};
          }
 
          return result.Channel;

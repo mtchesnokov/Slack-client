@@ -5,9 +5,11 @@ namespace Tch.Nuget.SlackClient.Domain.Exceptions
 {
    public class SlackClientException : Exception
    {
-      public HttpStatusCode ResponseStatusCode { get; set; }
+      public HttpStatusCode? ResponseStatusCode { get; set; }
 
       public string ResponseReasonPhrase { get; set; }
+
+      public string Reason { get; set; }
 
       public SlackClientException(string message) : base(message)
       {
