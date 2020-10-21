@@ -6,8 +6,9 @@ namespace Tch.Nuget.SlackClient.Interfaces
 {
    public interface ISlackClient
    {
-      Task<IEnumerable<SlackChannel>> ListPublicChannels();
+      Task<IEnumerable<SlackChannel>> GetPublicChannels();
 
       Task<SlackChannel> CreateChannel(string channelName);
+      Task<IEnumerable<SlackMember>> GetTeamMembers();
    }
 }

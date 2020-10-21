@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 using Tch.Nuget.SlackClient.Domain.Exceptions;
 using Tch.Nuget.SlackClient.Domain.Helpers;
 using Tch.Nuget.SlackClient.Domain.Objects;
-using Tch.Nuget.SlackClient.Interfaces.Channels;
 using Tch.Nuget.SlackClient.Interfaces.Helpers;
+using Tch.Nuget.SlackClient.Interfaces.Internals;
 using Tch.Nuget.SlackClient.Services.Helpers;
 
-namespace Tch.Nuget.SlackClient.Services.Channels
+namespace Tch.Nuget.SlackClient.Services.Internals
 {
    internal class CrudChannelService : ICrudChannelService
    {
@@ -41,7 +41,7 @@ namespace Tch.Nuget.SlackClient.Services.Channels
 
       #endregion
 
-      public async Task<IEnumerable<SlackChannel>> ListPublicChannels(string token)
+      public async Task<IEnumerable<SlackChannel>> GetPublicChannels(string token)
       {
          try
          {

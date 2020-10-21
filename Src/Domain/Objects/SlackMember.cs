@@ -1,10 +1,12 @@
 ﻿namespace Tch.Nuget.SlackClient.Domain.Objects
 {
-   internal class SlackMember
+   public class SlackMember
    {
       public string Id { get; set; }
 
       public string Name { get; set; }
+
+      public string Real_Name { get; set; }
 
       public bool Is_Bot { get; set; }
 

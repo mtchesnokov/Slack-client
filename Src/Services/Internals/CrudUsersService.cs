@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 using Tch.Nuget.SlackClient.Domain.Helpers;
 using Tch.Nuget.SlackClient.Domain.Objects;
 using Tch.Nuget.SlackClient.Interfaces.Helpers;
-using Tch.Nuget.SlackClient.Interfaces.Users;
+using Tch.Nuget.SlackClient.Interfaces.Internals;
 using Tch.Nuget.SlackClient.Services.Helpers;
 
-namespace Tch.Nuget.SlackClient.Services.Users
+namespace Tch.Nuget.SlackClient.Services.Internals
 {
-   internal class SlackUsersService : ISlackUsersService
+   internal class CrudUsersService : ICrudUsersService
    {
       class SlackUserResponse : SlackHttpResponseBase
       {
@@ -22,11 +22,11 @@ namespace Tch.Nuget.SlackClient.Services.Users
 
       #region ctor
 
-      public SlackUsersService() : this(new SlackHttpService())
+      public CrudUsersService() : this(new SlackHttpService())
       {
       }
 
-      protected SlackUsersService(ISlackHttpService httpService)
+      protected CrudUsersService(ISlackHttpService httpService)
       {
          _httpService = httpService ?? throw new ArgumentNullException(nameof(httpService));
       }

@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using Tch.SlackClient.IntTests.TestExtensions;
 
-namespace Tch.SlackClient.IntTests.UseCases.GetPublicChannels
+namespace Tch.SlackClient.IntTests.UseCases.GetTeamMembers
 {
    public class HappyTests : IntegrationTestBase
    {
@@ -10,7 +10,7 @@ namespace Tch.SlackClient.IntTests.UseCases.GetPublicChannels
       public async Task Happy_Case()
       {
          //act
-         var result = await SUT.GetPublicChannels();
+         var result = await SUT.GetTeamMembers();
 
          //print
          result.Print();
