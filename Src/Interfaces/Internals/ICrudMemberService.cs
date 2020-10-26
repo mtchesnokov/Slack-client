@@ -5,10 +5,10 @@ using Tch.Nuget.SlackClient.Domain.Objects;
 namespace Tch.Nuget.SlackClient.Interfaces.Internals
 {
    /// <summary>
-   /// This is handy service to work with team member collection
+   /// This interface represents service to CRUD team members
    /// </summary>
-   internal interface ICrudUsersService
+   internal interface ICrudMemberService
    {
-      Task<IEnumerable<SlackMember>> GetTeamMembers(string token);
+      Task<IEnumerable<SlackMember>> GetAll(string token);
    }
 }

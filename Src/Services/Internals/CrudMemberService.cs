@@ -11,7 +11,7 @@ using Tch.Nuget.SlackClient.Services.Helpers;
 
 namespace Tch.Nuget.SlackClient.Services.Internals
 {
-   internal class CrudUsersService : ICrudUsersService
+   internal class CrudMemberService : ICrudMemberService
    {
       class SlackUserResponse : SlackHttpResponseBase
       {
@@ -22,18 +22,18 @@ namespace Tch.Nuget.SlackClient.Services.Internals
 
       #region ctor
 
-      public CrudUsersService() : this(new SlackHttpService())
+      public CrudMemberService() : this(new SlackHttpService())
       {
       }
 
-      protected CrudUsersService(ISlackHttpService httpService)
+      protected CrudMemberService(ISlackHttpService httpService)
       {
          _httpService = httpService ?? throw new ArgumentNullException(nameof(httpService));
       }
 
       #endregion
 
-      public async Task<IEnumerable<SlackMember>> GetTeamMembers(string token)
+      public async Task<IEnumerable<SlackMember>> GetAll(string token)
       {
          try
          {

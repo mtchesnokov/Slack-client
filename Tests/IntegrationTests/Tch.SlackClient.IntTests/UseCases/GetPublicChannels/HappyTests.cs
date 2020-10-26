@@ -10,7 +10,7 @@ namespace Tch.SlackClient.IntTests.UseCases.GetPublicChannels
       public async Task Happy_Case()
       {
          //act
-         var result = await SUT.GetPublicChannels();
+         var result = await SUT.GetAllChannels();
 
          //print
          result.Print();

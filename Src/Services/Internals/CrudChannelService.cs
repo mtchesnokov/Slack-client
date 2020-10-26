@@ -41,7 +41,7 @@ namespace Tch.Nuget.SlackClient.Services.Internals
 
       #endregion
 
-      public async Task<IEnumerable<SlackChannel>> GetPublicChannels(string token)
+      public async Task<IEnumerable<SlackChannel>> GetAll(string token)
       {
          try
          {
@@ -54,7 +54,7 @@ namespace Tch.Nuget.SlackClient.Services.Internals
          }
       }
 
-      public async Task<SlackChannel> CreateChannel(string token, string channelName)
+      public async Task<SlackChannel> Create(string token, string channelName)
       {
          var payload = new
          {
@@ -72,16 +72,42 @@ namespace Tch.Nuget.SlackClient.Services.Internals
             {
                if (result.Channel == null)
                {
-                  throw new SlackChannelAlreadyExists {ChannelName = channelName};
+                  throw new SlackChannelAlreadyExistsException {ChannelName = channelName};
                }
 
                return result.Channel;
             }
 
-            throw new SlackClientException($"Creation of Slack channel '{channelName}' failed"){Reason = result.Error};
+            throw new SlackClientException($"Creation of Slack channel '{channelName}' failed") {Reason = result.Error};
          }
 
          return result.Channel;
+      }
+
+      public async Task CreateIfNotExists(string token, string channelName)
+      {
+         var channels = await GetAll(token);
+
+         var selectedChannel = channels.FirstOrDefault(c => string.Equals(c.Name, channelName, StringComparison.InvariantCultureIgnoreCase));
+
+         if (selectedChannel == null)
+         {
+            await Create(token, channelName);
+         }
+      }
+
+      public async Task<SlackChannel> GetByName(string token, string channelName)
+      {
+         var channels = await GetAll(token);
+
+         var selectedChannel = channels.FirstOrDefault(c => string.Equals(c.Name, channelName, StringComparison.InvariantCultureIgnoreCase));
+
+         if (selectedChannel == null)
+         {
+            throw new SlackChannelNotFoundException {ChannelName = channelName};
+         }
+
+         return selectedChannel;
       }
    }
 }

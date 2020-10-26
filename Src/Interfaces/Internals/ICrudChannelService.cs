@@ -5,12 +5,16 @@ using Tch.Nuget.SlackClient.Domain.Objects;
 namespace Tch.Nuget.SlackClient.Interfaces.Internals
 {
    /// <summary>
-   ///    This is handy service to manage Slack channels
+   ///    This interface represents service to CRUD slack channels
    /// </summary>
    internal interface ICrudChannelService
    {
-      Task<IEnumerable<SlackChannel>> GetPublicChannels(string token);
+      Task<IEnumerable<SlackChannel>> GetAll(string token);
 
-      Task<SlackChannel> CreateChannel(string token, string channelName);
+      Task<SlackChannel> Create(string token, string channelName);
+
+      Task CreateIfNotExists(string token, string channelName);
+
+      Task<SlackChannel> GetByName(string token, string channelName);
    }
 }

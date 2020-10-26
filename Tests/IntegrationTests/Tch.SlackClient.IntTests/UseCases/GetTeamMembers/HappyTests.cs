@@ -10,7 +10,7 @@ namespace Tch.SlackClient.IntTests.UseCases.GetTeamMembers
       public async Task Happy_Case()
       {
          //act
-         var result = await SUT.GetTeamMembers();
+         var result = await SUT.GetAllTeamMembers();
 
          //print
          result.Print();

@@ -13,7 +13,7 @@ namespace Tch.SlackClient.IntTests.UseCases.CreateChannel
          var channelName = "dummy-channel";
 
          //act+assert
-         var e = Assert.ThrowsAsync<SlackChannelAlreadyExists>(() => SUT.CreateChannel(channelName));
+         var e = Assert.ThrowsAsync<SlackChannelAlreadyExistsException>(() => SUT.CreateChannel(channelName));
 
          //print
          e.Print();
